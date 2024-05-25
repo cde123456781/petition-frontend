@@ -23,6 +23,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import MyPetitions from './components/MyPetitions';
+import CreatePetition from './components/CreatePetition';
 import { SnackbarProvider } from 'notistack';
 
 // import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
@@ -126,6 +127,7 @@ function App() {
             <Route path="/register" element={<Register/>}/>
             <Route path="/profile" element={<Profile/>}/>
             <Route path="/MyPetitions" element={<MyPetitions/>}/>
+            <Route path="/CreatePetition" element={<CreatePetition/>}/>
 
             <Route path="/" element={<Home/>}/>
   

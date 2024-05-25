@@ -18,7 +18,7 @@ import axios from 'axios';
 import { Link } from '@mui/material';
 import { VariantType, enqueueSnackbar } from 'notistack';
 
-const pages = ['Petitions'];
+const pages = ['Petitions', 'Create Petition'];
 const settings = ['Profile', 'Account', 'My Petitions', 'Logout'];
 
 const ResponsiveAppBar = () => {
@@ -149,13 +149,22 @@ const ResponsiveAppBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <Link href={"/" + page} style={{textDecoration:"none"}}>
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+      
+                <Link href={"/petitions"} style={{textDecoration:"none"}}>
+                  <MenuItem key="petitions" onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Petitions</Typography>
                   </MenuItem>
                   </Link>
-              ))}
+
+                  {isLoggedIn ?                 
+                  
+                  <Link href={"/CreatePetition"} style={{textDecoration:"none"}}>
+                  <MenuItem key="create" onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Create Petition</Typography>
+                  </MenuItem>
+                  </Link> :
+                  <div></div>}
+
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -178,18 +187,28 @@ const ResponsiveAppBar = () => {
             NOTPATREON
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-                    <Link href={"/" + page} style={{textDecoration:"none"}}>
+
+                    <Link href={"/petitions"} style={{textDecoration:"none"}}>
                         <Button
-                            key={page}
+                            key="petitions"
                             onClick={handleCloseNavMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }}
                         >
-                            {page}
+                            Petitions
                         </Button>
                     </Link>
+                    {isLoggedIn ?                     
+                    
+                    <Link href={"/CreatePetition"} style={{textDecoration:"none"}}>
+                        <Button
+                            key="create"
+                            onClick={handleCloseNavMenu}
+                            sx={{ my: 2, color: 'white', display: 'block' }}
+                        >
+                            Create Petition
+                        </Button>
+                    </Link> : <div></div>}
 
-            ))}
           </Box>
           {isLoggedIn ?
             <Box sx={{ flexGrow: 0 }}>
